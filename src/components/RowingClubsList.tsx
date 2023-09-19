@@ -8,15 +8,22 @@ interface Club {
 }
 
 function RowingClubList() {
-  const [clubs, setClubs] = useState<Club[]>([]); // Use the Club interface as the type
+  const [clubs, setClubs] = useState<Club[]>([]);
 
   useEffect(() => {
-    // Fetch data from the API here
     fetch('https://rowerwebsite.azurewebsites.net/api/rowingclub')
       .then(response => response.json())
       .then(data => setClubs(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
+
+  // Function to sanitize URLs
+  const sanitizeUrl = (url: string) => {
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return `http://${url}`;
+    }
+    return url;
+  };
 
   return (
     <div>
@@ -26,8 +33,10 @@ function RowingClubList() {
           <li key={index}>
             <h2>{club.clubName}</h2>
             <p>Location: {club.clubLocation}</p>
-            <p>Website: <a href={club.clubWebsiteURL}>{club.clubWebsiteURL}</a></p>
-            <p>Members: {club.memberCount}</p>
+            <p>
+              Website: <a href={sanitizeUrl(club.clubWebsiteURL)} target="_blank" rel="noopener noreferrer">{club.clubWebsiteURL}</a>
+            </p>
+            <p>Number of members: {club.memberCount}</p>
           </li>
         ))}
       </ul>
@@ -36,6 +45,3 @@ function RowingClubList() {
 }
 
 export default RowingClubList;
-
-
-//'https://rowerwebsite.azurewebsites.net/api/rowingclub'
