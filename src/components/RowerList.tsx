@@ -1,4 +1,3 @@
-// RowerList.tsx
 import React, { useState, useEffect } from 'react';
 
 interface Rower {
@@ -12,6 +11,7 @@ interface Rower {
     clubLocation: string;
     clubWebsiteURL: string;
   }[];
+  photoFileName: string;
 }
 
 function RowerList() {
@@ -31,6 +31,12 @@ function RowerList() {
         {rowers.map((rower, index) => (
           <li key={index}>
             <h2>{rower.firstName} {rower.lastName}</h2>
+            <img
+              src={`https://rowerwebsite.azurewebsites.net/api/File?name=${encodeURIComponent(
+                rower.photoFileName
+              )}`} 
+              alt={`${rower.firstName} ${rower.lastName}`}
+            />
             <p>Gender: {rower.gender}</p>
             <p>Height: {rower.height} cm</p>
             <p>Weight: {rower.weight} kg</p>
