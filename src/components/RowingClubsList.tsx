@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { sanitizeUrl } from '../helperFunctions/sanitizeUrl';
 interface Club {
   clubName: string;
   clubLocation: string;
@@ -16,15 +16,6 @@ function RowingClubList() {
       .then(data => setClubs(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
-
-  // Function to sanitize URLs
-  const sanitizeUrl = (url: string) => {
-    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-      return `http://${url}`;
-    }
-    return url;
-  };
-
   return (
     <div>
       <h1>Rowing Clubs</h1>

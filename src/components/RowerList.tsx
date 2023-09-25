@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { sanitizeUrl } from '../helperFunctions/sanitizeUrl';
 import './RowerList.css';
 
 interface Rower {
@@ -50,8 +51,7 @@ function RowerList() {
                   <p>Location: {club.clubLocation}</p>
                   <p>
                     Website:{' '}
-                    <a href={club.clubWebsiteURL} target="_blank" rel="noopener noreferrer">
-                      {club.clubWebsiteURL}
+                    <a href={sanitizeUrl(club.clubWebsiteURL)} target="_blank" rel="noopener noreferrer">{club.clubWebsiteURL}
                     </a>
                   </p>
                 </li>
