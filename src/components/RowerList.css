@@ -1,0 +1,5 @@
+.rower-image {
+  width: 300px; /* Adjust the width as per your preference */
+  height: 300px; /* Adjust the height as per your preference */
+  object-fit: cover; /* This property ensures the image covers the specified dimensions */
+}

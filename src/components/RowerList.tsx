@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './RowerList.css';
 
 interface Rower {
   firstName: string;
@@ -36,6 +37,7 @@ function RowerList() {
                 rower.photoFileName
               )}`} 
               alt={`${rower.firstName} ${rower.lastName}`}
+              className="rower-image"
             />
             <p>Gender: {rower.gender}</p>
             <p>Height: {rower.height} cm</p>
