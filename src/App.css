@@ -1,0 +1,29 @@
+.navbar {
+    background-color: #025ab1; /* Dark blue background color */
+    overflow: hidden;
+    display: flex;
+  }
+  
+  .navbar a {
+    color: #fff; /* White text color */
+    text-decoration: none;
+    padding: 14px 16px;
+    margin-right: 10px; /* Add some margin between elements */
+  }
+  
+  .navbar a:hover {
+    background-color: #004080; /* Darker blue on hover */
+  }
+  
+  /* Adjustments for the active link */
+  .navbar a.active {
+    background-color: #003366; /* Different shade for active link */
+  }
+  
+  /* Clear floats after the navbar */
+  .navbar:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  

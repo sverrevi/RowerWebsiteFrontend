@@ -5,6 +5,7 @@ interface Club {
   clubLocation: string;
   clubWebsiteURL: string;
   memberCount: number;
+  clubLogoFileName: string;
 }
 
 function RowingClubList() {
@@ -23,6 +24,13 @@ function RowingClubList() {
         {clubs.map((club, index) => (
           <li key={index}>
             <h2>{club.clubName}</h2>
+            <img
+                  src={`https://rowerwebsite.azurewebsites.net/api/File?name=${encodeURIComponent(
+                    club.clubLogoFileName
+                  )}`} 
+                  alt={`${club.clubName}`}
+                  className="rower-image"
+                />
             <p>Location: {club.clubLocation}</p>
             <p>
               Website: <a href={sanitizeUrl(club.clubWebsiteURL)} target="_blank" rel="noopener noreferrer">{club.clubWebsiteURL}</a>
