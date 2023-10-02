@@ -29,7 +29,7 @@ function RowingClubList() {
                     club.clubLogoFileName
                   )}`} 
                   alt={`${club.clubName}`}
-                  className="rower-image"
+                  className="rowingClub-image"
                 />
             <p>Location: {club.clubLocation}</p>
             <p>

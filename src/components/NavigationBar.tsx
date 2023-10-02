@@ -10,6 +10,9 @@ function NavigationBar() {
 
   return (
     <div className="navbar">
+      <Link to="/" className="nav-link" onClick={() => handleNavigation('/')}>
+        Home
+      </Link>
       <Link to="/rowers" className="nav-link" onClick={() => handleNavigation('/rowers')}>
         Rowers
       </Link>
