@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
 import RowingClubList from './components/RowingClubsList';
 import RowerList from './components/RowerList';
-import HomeContent from './components/homeContent';
+import HomeContent from './components/HomeContent';
 import './App.css';
 function App() {
   return (

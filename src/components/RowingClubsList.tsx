@@ -18,7 +18,7 @@ function RowingClubList() {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
   return (
-    <div>
+    <div style={{ paddingLeft: '15px' }}>
       <h1>Rowing Clubs</h1>
       <ul>
         {clubs.map((club, index) => (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { sanitizeUrl } from '../helperFunctions/sanitizeUrl';
+import { ClipLoader } from 'react-spinners';
 import './RowerList.css';
 
 interface Rower {
@@ -18,7 +19,10 @@ interface Rower {
 
 function RowerList() {
   const [rowers, setRowers] = useState<Rower[]>([]);
+  const [filteredRowers, setFilteredRowers] = useState<Rower[]>([]);
   const [loading, setLoading] = useState(true);
+  const [genderFilter, setGenderFilter] = useState<string | null>(null);
+  const [heightFilter, setHeightFilter] = useState<string>('');
 
   useEffect(() => {
     fetch('https://rowerwebsite.azurewebsites.net/api/rower')
@@ -33,15 +37,65 @@ function RowerList() {
       });
   }, []);
 
+  useEffect(() => {
+    const filtered = rowers
+      .filter(rower => (genderFilter ? rower.gender === genderFilter : true))
+      .sort((a, b) => {
+        if (heightFilter === 'asc') {
+          return a.height - b.height;
+        } else if (heightFilter === 'desc') {
+          return b.height - a.height;
+        }
+        return 0;
+      });
+    setFilteredRowers(filtered);
+  }, [genderFilter, heightFilter, rowers]);
+
+  const handleGenderFilterChange = (selectedGender: string) => {
+    setGenderFilter(selectedGender);
+  };
+
+  const handleHeightFilterChange = (selectedHeight: string) => {
+    setHeightFilter(selectedHeight);
+  };
+
+  const resetFilters = () => {
+    setGenderFilter(null);
+    setHeightFilter('');
+  };
+
   return (
-    <div>
+    <div style={{ paddingLeft: '20px' }}>
       {loading ? (
-        <p>Loading...</p>
+        <div className="loader-container">
+          <ClipLoader size={50} color={'#123abc'} loading={loading} />
+          <p>Loading rowers, hang on tight</p>
+        </div>
       ) : (
         <div>
           <h1>Rowers</h1>
+          <div>
+            <label style={{ marginRight: '8px' }}>Filter by Gender: </label>
+            <select value={genderFilter || ''} onChange={(e) => handleGenderFilterChange(e.target.value)}>
+              <option value="">Any</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+
+            <label style={{ marginLeft: '16px', marginRight: '8px' }}>Filter by Height: </label>
+            <select value={heightFilter} onChange={(e) => handleHeightFilterChange(e.target.value)}>
+              <option value="">Any</option>
+              <option value="asc">Height Ascending</option>
+              <option value="desc">Height Descending</option>
+            </select>
+
+            <button onClick={resetFilters}>
+              Reset Filters
+            </button>
+          </div>
+
           <ul>
-            {rowers.map((rower, index) => (
+            {filteredRowers.map((rower, index) => (
               <li key={index}>
                 <h2>{rower.firstName} {rower.lastName}</h2>
                 <img
