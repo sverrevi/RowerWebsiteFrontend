@@ -10,4 +10,4 @@ The website is developed using React with TypeScript and utilizes the [Vite](htt
 3. Use the command `npm run dev` and open the localhost url.
 
 # Hosting
-The app is hosted using [Netlify](https://www.netlify.com/).
+The app is hosted using [Netlify](https://www.netlify.com/). The app can be used with the following url: https://main--teal-gumption-612adf.netlify.app/
