@@ -8,3 +8,6 @@ The website is developed using React with TypeScript and utilizes the [Vite](htt
 1. Install node packet manager (npm) on your local device. Further info on how to download npm can be found on the following page: https://nodejs.org/en/download/package-manager.
 2. Download dependencies from packages.json by writing `npm install` in the command line.
 3. Use the command `npm run dev` and open the localhost url.
+
+# Hosting
+The app is hosted using [Netlify](https://www.netlify.com/).
