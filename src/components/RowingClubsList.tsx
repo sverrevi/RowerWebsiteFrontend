@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ClipLoader } from 'react-spinners';
 import { sanitizeUrl } from '../helperFunctions/sanitizeUrl';
 interface Club {
   clubName: string;
@@ -10,15 +11,24 @@ interface Club {
 
 function RowingClubList() {
   const [clubs, setClubs] = useState<Club[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://rowerwebsite.azurewebsites.net/api/rowingclub')
       .then(response => response.json())
       .then(data => setClubs(data))
       .catch(error => console.error('Error fetching data:', error));
+      setLoading(false);
   }, []);
   return (
     <div style={{ paddingLeft: '15px' }}>
+      {loading ? (
+      <div className="loader-container">
+          <ClipLoader size={50} color={'#123abc'} loading={loading} />
+          <p>Loading rowing clubs, hang on tight</p>
+          </div>
+        ) : (
+        <div>
       <h1>Rowing Clubs</h1>
       <ul>
         {clubs.map((club, index) => (
@@ -39,6 +49,8 @@ function RowingClubList() {
           </li>
         ))}
       </ul>
+        </div>
+        )}
     </div>
   );
 }
