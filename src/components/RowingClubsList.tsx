@@ -15,10 +15,15 @@ function RowingClubList() {
 
   useEffect(() => {
     fetch('https://rowerwebsite.azurewebsites.net/api/rowingclub')
-      .then(response => response.json())
-      .then(data => setClubs(data))
-      .catch(error => console.error('Error fetching data:', error));
+    .then(response => response.json())
+    .then(data => {
+      setClubs(data);
       setLoading(false);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    });
   }, []);
   return (
     <div style={{ paddingLeft: '15px' }}>
