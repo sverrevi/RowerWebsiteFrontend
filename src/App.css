@@ -1,15 +1,15 @@
-.body-with-background {
-  background-image: url('https://www.britishrowing.org/wp-content/uploads/2022/08/GBR_M9_ERC2022.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
-  background-size: contain; /* Ensure the background image covers the entire container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  min-height: 10vh; /* Set a minimum height to cover the entire viewport */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-}
+/*.body-with-background {
+  background-image: url('https://www.britishrowing.org/wp-content/uploads/2022/08/GBR_M9_ERC2022.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;/
+  min-height: 10vh;
+  margin: 0; 
+  padding: 0;}
 
+ */
 .navbar {
-    background-color: #025ab1; /* Dark blue background color */
+    background-color: #025ab1; /* Dark blue background color
     overflow: hidden;
     display: flex;
   }
