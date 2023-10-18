@@ -1,39 +1,51 @@
-/*.body-with-background {
-  background-image: url('https://www.britishrowing.org/wp-content/uploads/2022/08/GBR_M9_ERC2022.jpg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;/
-  min-height: 10vh;
-  margin: 0; 
-  padding: 0;}
-
- */
+/* App.css */
 .navbar {
-    background-color: #025ab1; /* Dark blue background color
-    overflow: hidden;
-    display: flex;
-  }
-  
-  .navbar a {
-    color: #fff; /* White text color */
-    text-decoration: none;
-    padding: 14px 16px;
-    margin-right: 10px; /* Add some margin between elements */
-  }
-  
-  .navbar a:hover {
-    background-color: #004080; /* Darker blue on hover */
-  }
-  
-  /* Adjustments for the active link */
-  .navbar a.active {
-    background-color: #003366; /* Different shade for active link */
-  }
-  
-  /* Clear floats after the navbar */
-  .navbar:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
+  background-color: #025ab1;
+  overflow: hidden;
+  display: flex;
+}
+
+.nav-link,
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 16px;
+  margin-right: 10px;
+}
+
+.nav-link:hover,
+.navbar a:hover {
+  background-color: #004080;
+  color: #fff; /* Add this line to set the text color on hover */
+}
+
+/* Adjustments for the active link */
+.nav-link.active,
+.navbar a.active {
+  background-color: #003366;
+  color: #fff; /* Add this line to set the text color for the active link */
+}
+
+/* Clear floats after the navbar */
+.navbar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.login-section button {
+  background-color: #4CAF50; /* Previous green color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.login-section button:hover {
+  background-color: #45a049; /* Darker green color on hover */
+}

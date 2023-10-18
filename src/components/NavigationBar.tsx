@@ -1,5 +1,6 @@
 // NavigationBar.tsx
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import '../App.css';
 
@@ -19,30 +20,29 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
   useEffect(() => {
     // Update local state when isLoggedIn prop changes
     if (!isLoggedIn) {
-      console.log("Hello")
       setUsername('');
     }
   }, [isLoggedIn]);
 
   return (
     <div className="navbar">
-      <Link to="/" className="nav-link" onClick={() => handleNavigation('/')}>
+      <NavLink to="/" className="nav-link" onClick={() => handleNavigation('/')}>
         Home
-      </Link>
-      <Link to="/rowers" className="nav-link" onClick={() => handleNavigation('/rowers')}>
+      </NavLink>
+      <NavLink to="/rowers" className="nav-link" onClick={() => handleNavigation('/rowers')}>
         Rowers
-      </Link>
-      <Link to="/rowingclubs" className="nav-link" onClick={() => handleNavigation('/rowingclubs')}>
+      </NavLink>
+      <NavLink to="/rowingclubs" className="nav-link" onClick={() => handleNavigation('/rowingclubs')}>
         Rowing Clubs
-      </Link>
+      </NavLink>
       <div className="login-section">
         {isLoggedIn ? (
           <div>
             <span>Welcome, {username}!</span>
             <button onClick={onLogout}>Logout</button>
-            <Link to="/protected" className="nav-link" onClick={() => handleNavigation('/protected')}>
+            <NavLink to="/protected" className="nav-link" onClick={() => handleNavigation('/protected')}>
               Protected Page
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <button className="nav-link" onClick={() => handleNavigation('/login')}>
