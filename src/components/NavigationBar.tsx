@@ -1,7 +1,7 @@
 // NavigationBar.tsx
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 interface NavigationBarProps {
@@ -45,9 +45,9 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
             </NavLink>
           </div>
         ) : (
-          <button className="nav-link" onClick={() => handleNavigation('/login')}>
+          <NavLink to="/login" className="nav-link">
             Login
-          </button>
+          </NavLink>
         )}
       </div>
     </div>
