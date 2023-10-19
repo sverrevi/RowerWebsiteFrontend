@@ -1,4 +1,3 @@
-// NavigationBar.tsx
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -18,9 +17,22 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
   };
 
   useEffect(() => {
-    // Update local state when isLoggedIn prop changes
-    if (!isLoggedIn) {
-      setUsername('');
+    const fetchUsername = async () => {
+      try {
+        // Use your own logic to obtain the username
+        // For now, we'll assume it's stored in localStorage after login
+        const storedUsername = localStorage.getItem('username');
+        
+        if (storedUsername) {
+          setUsername(storedUsername);
+        }
+      } catch (error) {
+        console.error('Failed to fetch username', error);
+      }
+    };
+
+    if (isLoggedIn) {
+      fetchUsername();
     }
   }, [isLoggedIn]);
 
@@ -37,13 +49,15 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
       </NavLink>
       <div className="login-section">
         {isLoggedIn ? (
-          <div>
-            <span>Welcome, {username}!</span>
-            <button onClick={onLogout}>Logout</button>
+          <>
+            <div>
+              <span>Welcome, Sverdet!</span>
+              <button onClick={onLogout}>Logout</button>
+            </div>
             <NavLink to="/protected" className="nav-link" onClick={() => handleNavigation('/protected')}>
-              Protected Page
+              Add to database
             </NavLink>
-          </div>
+          </>
         ) : (
           <NavLink to="/login" className="nav-link">
             Login

@@ -4,7 +4,8 @@ import NavigationBar from './components/NavigationBar';
 import RowingClubList from './components/RowingClubsList';
 import RowerList from './components/RowerList';
 import HomeContent from './components/HomeContent';
-import LoginComponent from './components/LoginComponent'; // Import LoginComponent
+import LoginComponent from './components/LoginComponent';
+import ProtectedContent from './components/ProtectedComponent';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <div>
         <NavigationBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
+          <Route path="/protected" element={<ProtectedContent/>}/>
           <Route path="/rowingclubs" element={<RowingClubList />} />
           <Route path="/rowers" element={<RowerList />} />
           <Route path="/login" element={<LoginComponent onLogin={handleLogin} />} />

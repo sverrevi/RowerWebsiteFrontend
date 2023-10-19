@@ -1,4 +1,3 @@
-// LoginComponent.tsx
 import React, { useState } from 'react';
 import { login } from './AuthService';
 import { useNavigate } from 'react-router-dom';
@@ -21,21 +20,23 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
       return;
     }
 
-    const success = await login(trimmedUsername, trimmedPassword);
+    try {
+      const response = await login(trimmedUsername, trimmedPassword);
 
-    if (success) {
-      // Show a congratulatory message
-      alert('Congratulations! Login successful.');
-      console.log('Redirecting to home page...');
+      if (response.success) {
 
-      // Call the onLogin callback
-      onLogin();
+        alert('Congratulations! Login successful.');
+        console.log('Redirecting to home page...');
+        console.log(response.username)
 
-      // Redirect to a protected page or do something else
-      navigate('/');
-    } else {
-      // Handle login failure
-      alert('Login failed. Please check your credentials.');
+        onLogin();
+        navigate('/');
+      } else {
+        alert('Login failed. Please check your credentials.');
+      }
+    } catch (error) {
+      console.error('An error occurred during login:', error);
+      alert('An error occurred during login. Please try again.');
     }
   };
 
