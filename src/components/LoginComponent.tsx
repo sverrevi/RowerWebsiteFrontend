@@ -3,7 +3,7 @@ import { login } from './AuthService';
 import { useNavigate } from 'react-router-dom';
 
 interface LoginComponentProps {
-  onLogin: () => void;
+  onLogin: (response:any) => void;
 }
 
 const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
@@ -29,7 +29,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
         console.log('Redirecting to home page...');
         console.log(response.username)
 
-        onLogin();
+        onLogin(response);
         navigate('/');
       } else {
         alert('Login failed. Please check your credentials.');

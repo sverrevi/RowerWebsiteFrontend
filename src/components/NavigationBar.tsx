@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import { UserContext } from '../lib/context';
 
 interface NavigationBarProps {
   isLoggedIn: boolean;
@@ -10,31 +11,11 @@ interface NavigationBarProps {
 
 function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-
+  const userContext = useContext(UserContext);
+  const username = userContext.username;
   const handleNavigation = (path: string) => {
     navigate(path);
   };
-
-  useEffect(() => {
-    const fetchUsername = async () => {
-      try {
-        // Use your own logic to obtain the username
-        // For now, we'll assume it's stored in localStorage after login
-        const storedUsername = localStorage.getItem('username');
-        
-        if (storedUsername) {
-          setUsername(storedUsername);
-        }
-      } catch (error) {
-        console.error('Failed to fetch username', error);
-      }
-    };
-
-    if (isLoggedIn) {
-      fetchUsername();
-    }
-  }, [isLoggedIn]);
 
   return (
     <div className="navbar">
@@ -48,10 +29,10 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
         Rowing Clubs
       </NavLink>
       <div className="login-section">
-        {isLoggedIn ? (
+        {username ? (
           <>
             <div>
-              <span>Welcome, Sverdet!</span>
+              <span>Welcome, {username}</span>
               <button onClick={onLogout}>Logout</button>
             </div>
             <NavLink to="/protected" className="nav-link" onClick={() => handleNavigation('/protected')}>
