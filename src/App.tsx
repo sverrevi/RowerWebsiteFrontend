@@ -28,7 +28,6 @@ function App() {
   }, []);
 
   const logout = useCallback(() => {
-    //To do: send logout request to backend: create the endpoint in .NET application.
     clearCredentials();
     setCurrentUser(null);
     
