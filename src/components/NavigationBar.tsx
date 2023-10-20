@@ -43,7 +43,7 @@ function NavigationBar({ logout }: NavigationBarProps) {
         {username ? (
           <>
             <div>
-              <span>Welcome, {username}</span>
+              <span>Welcome, {username}!</span>
               <button onClick={logout}>Logout</button>
             </div>
             <NavLink
