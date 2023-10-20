@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import '../App.css';
-import { UserContext } from '../lib/context';
+import React, { useState, useEffect, useContext } from "react";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+import { UserContext } from "../lib/context";
 
 interface NavigationBarProps {
-  isLoggedIn: boolean;
-  onLogout: () => void;
+  logout: () => void;
 }
 
-function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
+function NavigationBar({ logout }: NavigationBarProps) {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const username = userContext.username;
@@ -19,13 +18,25 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
 
   return (
     <div className="navbar">
-      <NavLink to="/" className="nav-link" onClick={() => handleNavigation('/')}>
+      <NavLink
+        to="/"
+        className="nav-link"
+        onClick={() => handleNavigation("/")}
+      >
         Home
       </NavLink>
-      <NavLink to="/rowers" className="nav-link" onClick={() => handleNavigation('/rowers')}>
+      <NavLink
+        to="/rowers"
+        className="nav-link"
+        onClick={() => handleNavigation("/rowers")}
+      >
         Rowers
       </NavLink>
-      <NavLink to="/rowingclubs" className="nav-link" onClick={() => handleNavigation('/rowingclubs')}>
+      <NavLink
+        to="/rowingclubs"
+        className="nav-link"
+        onClick={() => handleNavigation("/rowingclubs")}
+      >
         Rowing Clubs
       </NavLink>
       <div className="login-section">
@@ -33,9 +44,13 @@ function NavigationBar({ isLoggedIn, onLogout }: NavigationBarProps) {
           <>
             <div>
               <span>Welcome, {username}</span>
-              <button onClick={onLogout}>Logout</button>
+              <button onClick={logout}>Logout</button>
             </div>
-            <NavLink to="/protected" className="nav-link" onClick={() => handleNavigation('/protected')}>
+            <NavLink
+              to="/protected"
+              className="nav-link"
+              onClick={() => handleNavigation("/protected")}
+            >
               Add to database
             </NavLink>
           </>
