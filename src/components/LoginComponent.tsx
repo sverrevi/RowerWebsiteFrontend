@@ -27,7 +27,6 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
 
         alert('Congratulations! Login successful.');
         console.log('Redirecting to home page...');
-        console.log(response.username)
 
         onLogin(response);
         navigate('/');
