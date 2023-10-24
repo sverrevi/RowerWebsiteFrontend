@@ -3,7 +3,7 @@ import { login } from './AuthService';
 import { useNavigate } from 'react-router-dom';
 
 interface LoginComponentProps {
-  onLogin: (response:any) => void;
+  onLogin: (response: any) => void;
 }
 
 const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
@@ -12,11 +12,11 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
   const [password, setPassword] = useState<string>('');
 
   const handleLogin = async () => {
-    const trimmedUsername = username.trim();
+    const trimmedUsername = username.trimEnd();
     const trimmedPassword = password.trim();
 
-    if (!trimmedUsername || !trimmedPassword) {
-      alert('Please enter both username and password.');
+    if (!trimmedUsername || !trimmedPassword || password !== trimmedPassword) {
+      alert('Please enter both username and password without spaces at the end.');
       return;
     }
 
@@ -24,10 +24,8 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ onLogin }) => {
       const response = await login(trimmedUsername, trimmedPassword);
 
       if (response.success) {
-
         alert('Congratulations! Login successful.');
-        console.log('Redirecting to home page...');
-
+        console.log('Redirecting to the home page...');
         onLogin(response);
         navigate('/');
       } else {
