@@ -5,7 +5,8 @@ import RowingClubList from "./components/RowingClubsList";
 import RowerList from "./components/RowerList";
 import HomeContent from "./components/HomeContent";
 import LoginComponent from "./components/LoginComponent";
-import ProtectedContent from "./components/ProtectedComponent";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AddToDB from "./components/AddToDB";
 import "./App.css";
 import { UserContext } from "./lib/context";
 import { storeCredentials, getAuthenticatedUserOrNull, clearCredentials } from "./lib/auth";
@@ -50,7 +51,10 @@ function App() {
         <div>
           <NavigationBar logout={logout} />
           <Routes>
-            <Route path="/protected" element={<ProtectedContent />} />
+            <Route element={<ProtectedRoute/>}>
+              <Route path="/add" element = {<AddToDB/>} ></Route>
+
+            </Route>
             <Route path="/rowingclubs" element={<RowingClubList />} />
             <Route path="/rowers" element={<RowerList />} />
             <Route path="/login" element={<LoginComponent onLogin={login} />} />

@@ -8,7 +8,6 @@ export function storeCredentials(token: string) {
 export async function getAuthenticatedUserOrNull() {
   const token = sessionStorage.getItem("token");
   if (!token) return null;
-  console.log(token);
 
   const usernameResponse = await axios.get(
     "https://rowerwebsite.azurewebsites.net/api/Auth/Username",

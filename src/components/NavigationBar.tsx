@@ -47,9 +47,9 @@ function NavigationBar({ logout }: NavigationBarProps) {
               <button onClick={logout}>Logout</button>
             </div>
             <NavLink
-              to="/protected"
+              to="/add"
               className="nav-link"
-              onClick={() => handleNavigation("/protected")}
+              onClick={() => handleNavigation("/add")}
             >
               Add to database
             </NavLink>
