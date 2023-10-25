@@ -1,3 +1,4 @@
+import ImageUpload from './ImageUpload';
 const AddToDB = () => {
     return (
       <div>
@@ -8,6 +9,7 @@ const AddToDB = () => {
         <p>
           Is this a protected route?
         </p>
+        <ImageUpload /> {/* Add the ImageUpload component here */}
       </div>
     );
   };
