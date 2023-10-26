@@ -19,16 +19,25 @@ const ImageUpload: React.FC = () => {
 
   const handleUpload = () => {
     if (selectedFile && id) {
-      const formData = new FormData();
-      formData.append('file', selectedFile);
-      console.log(formData)
-      axios.post(`https://rowerwebsite.azurewebsites.net/api/File/upload/${id}`, formData)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+        const token = sessionStorage.getItem("token");
+        
+        const config = {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+          },
+        };
+        
+        axios.post(`https://rowerwebsite.azurewebsites.net/api/File/upload/${id}`, formData, config)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        
     }
   };
 

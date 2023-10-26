@@ -1,17 +1,17 @@
+import React from 'react';
 import ImageUpload from './ImageUpload';
+import AddRower from './AddRower'; // Import the AddRower component
+
 const AddToDB = () => {
-    return (
-      <div>
-        <h2>Here we add to db</h2>
-        <p>
-          Change code
-        </p>
-        <p>
-          Is this a protected route?
-        </p>
-        <ImageUpload /> {/* Add the ImageUpload component here */}
-      </div>
-    );
-  };
-  
-  export default AddToDB;
+  return (
+    <div>
+      <h2>Here we add to db</h2>
+      <p>Image Upload</p>
+      <ImageUpload /> {/* Use the ImageUpload component here */}
+      <hr />
+      <AddRower /> {/* Use the AddRower component here */}
+    </div>
+  );
+};
+
+export default AddToDB;
