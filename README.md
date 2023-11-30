@@ -4,7 +4,7 @@ This repository consists of the code for the frontend of a personal fullstack we
 
 The website is developed using React with TypeScript and utilizes the [Vite](https://vitejs.dev/) build tool.
 
-## Note being
+## Note
 The website, as of 11.30.23, does not have a server. The server was deleted as the website is no longer being developed. The website will possibly be deployed using a new server later, but as of now, the website is not functioning. A demonstration of the website from when the website had a server can be found with the following youtube links:
 https://youtu.be/5b3poCSqPfQ
 https://youtu.be/X18MxMAUBzw
